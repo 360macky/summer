@@ -3,6 +3,11 @@ import openai
 
 with open('OPEN_AI_API.json') as file_api:
     file_data = json.load(file_api)
+
+if file_data['key'] == '':
+    print('ERROR: OpenAI API Key not provided!')
+    print('       Fill the key property at OPEN_AI_API.json\n')
+
 openai.api_key = file_data['key']
 
 print('SUMMER - Summarizer of texts\n')
