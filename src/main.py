@@ -19,7 +19,8 @@ print('1. DaVinci (default)')
 print('2. Ada')
 print('3. Babbage')
 print('4. Curie')
-ai_engine_identifier = int(input('Enter the AI engine you want to use (choose a number): '))
+ai_engine_identifier = int(
+    input('Enter the AI engine you want to use (choose a number): '))
 
 if ai_engine_identifier == 2:
     ai_engine = 'ada'
@@ -38,14 +39,15 @@ text_input = text_input.strip()
 print('Please wait...')
 
 response = openai.Completion.create(
-        engine=ai_engine,
-        prompt="My second grader asked me what this passage means:\n\"\"\"\n" + text_input + "\n\"\"\"\nI rephrased it for him, in plain language a second grader can understand:\n\"\"\"\n",
-        temperature=0.5,
-        max_tokens=100,
-        top_p=1,
-        frequency_penalty=0.2,
-        presence_penalty=0,
-        stop=["\"\"\""]
+    engine=ai_engine,
+    prompt="My second grader asked me what this passage means:\n\"\"\"\n" + text_input +
+    "\n\"\"\"\nI rephrased it for him, in plain language a second grader can understand:\n\"\"\"\n",
+    temperature=0.5,
+    max_tokens=100,
+    top_p=1,
+    frequency_penalty=0.2,
+    presence_penalty=0,
+    stop=["\"\"\""]
 )
 
 print('\nYour response is: ')
@@ -56,5 +58,3 @@ text_response = response["choices"][0]["text"]
 with open('summarized_text.txt', 'a') as file_output:
     print('\nText saved on summarized_text.txt!')
     file_output.write(text_response)
-
-
